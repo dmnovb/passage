@@ -1,4 +1,63 @@
 @font-face {
   font-family: "Garamond";
   src: url("../../public/fonts/EBGaramond-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Garamond";
+  src: url("../../public/fonts/EBGaramond-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Garamond";
+  src: url("../../public/fonts/EBGaramond-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Garamond";
+  src: url("../../public/fonts/EBGaramond-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Garamond";
+  src: url("../../public/fonts/EBGaramond-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Garamond";
+  src: url("../../public/fonts/EBGaramond-MediumItalic.ttf");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Garamond";
+  src: url("../../public/fonts/EBGaramond-SemiBoldItalic.ttf");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Garamond";
+  src: url("../../public/fonts/EBGaramond-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
 }

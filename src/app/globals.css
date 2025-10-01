@@ -84,6 +84,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Light, airy accent tones for gradients */
+  --accent-sky-1: oklch(0.97 0.02 200);
+  --accent-sky-2: oklch(0.98 0.03 220);
+  --accent-blush-1: oklch(0.98 0.02 10);
 }
 
 .dark {
@@ -124,15 +129,40 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
+/* Background: soft radial gradients with subtle blur */
 body {
-  background: oklch(0.9702 0 0);
+  background: radial-gradient(1200px 800px at 20% 10%, color-mix(in oklch, var(--accent-sky-2) 30%, transparent), transparent 60%),
+    radial-gradient(900px 700px at 80% 20%, color-mix(in oklch, var(--accent-blush-1) 25%, transparent), transparent 60%),
+    radial-gradient(1200px 800px at 70% 80%, color-mix(in oklch, var(--accent-sky-1) 20%, transparent), transparent 60%),
+    oklch(0.985 0 0);
   margin: 0;
   padding: 0;
-
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-family: "Garamond";
+}
+
+/* Utilities */
+.glass {
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  background: linear-gradient(180deg,
+      color-mix(in oklch, white 55%, transparent),
+      color-mix(in oklch, white 35%, transparent));
+  border: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+}
+
+.fade-edge {
+  mask-image: radial-gradient(1000px 400px at 50% 0%, black, transparent 85%);
+}
+
+.rhythm {
+  letter-spacing: 0.01em;
+  line-height: 1.65;
 }
