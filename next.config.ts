@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   env: {
-    NEXT_PUBLIC_BIBLE_API_KEY: process.env.NEXT_PUBLIC_BIBLE_API_KEY
+    BIBLE_API_KEY: process.env.BIBLE_API_KEY
   }
 };
 
