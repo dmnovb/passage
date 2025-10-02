@@ -41,8 +41,9 @@ function buildSearchUrl({ bibleId, query, limit, offset }: UseBibleSearchArgs) {
 
 async function fetcher(url: string): Promise<BibleSearchResponse> {
     const apiKey = process.env.NEXT_PUBLIC_BIBLE_API_KEY ?? process.env.BIBLE_API_KEY;
+    console.log(process.env.NEXT_PUBLIC_BIBLE_API_KEY)
     if (!apiKey) {
-        throw new Error("Missing Bible API key. Set NEXT_PUBLIC_BIBLE_API_KEY or BIBLE_API_KEY.");
+        throw new Error("Something went wrong.");
     }
     const res = await fetch(url, {
         headers: {
