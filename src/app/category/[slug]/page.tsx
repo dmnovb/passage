@@ -46,7 +46,6 @@ const Category = ({ params }: CategoryProps) => {
         offset: 0
     });
 
-    // Transform API results to match Verse interface
     const transformedVerses: Verse[] = results.map((verse, index) => ({
         id: index,
         text: verse.text,
