@@ -63,8 +63,10 @@ export function useBibleSearch(args: UseBibleSearchArgs) {
     const key = enabled ? buildSearchUrl(args) : null;
 
     const { data, error, isLoading, mutate } = useSWR<BibleSearchResponse>(key, fetcher, {
-        keepPreviousData: true,
         revalidateOnFocus: false,
+        dedupingInterval: 60000,
+        refreshInterval: 0,
+        revalidateOnReconnect: false
     });
 
     return {

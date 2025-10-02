@@ -39,8 +39,6 @@ const Category = ({ params }: CategoryProps) => {
     const [categorySearch, setCategorySearch] = useState('');
     const [bibleId] = useState('de4e12af7f28f599-02'); // KJV Bible ID
 
-    console.log({ category, categoryLower })
-
     const { results, total, isLoading, isError, error } = useBibleSearch({
         bibleId: bibleId,
         query: searchQuery,
