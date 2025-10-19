@@ -65,7 +65,7 @@ const Category = ({ params }: CategoryProps) => {
 
     return (
         <div className="min-h-screen bg-background">
-            <div className="max-w-4xl mx-auto px-4 py-12">
+            <div className="max-w-4xl mx-auto px-4 py-6 sm:py-12 pt-16 md:pt-12">
                 <PassageHeader
                     category={category}
                     icon={Sprout}
@@ -73,31 +73,31 @@ const Category = ({ params }: CategoryProps) => {
                 />
 
                 {/* Results section */}
-                <div className="mt-12 space-y-6">
+                <div className="mt-8 sm:mt-12 space-y-4 sm:space-y-6 pb-6">
                     {isLoading && (
                         <div className="text-center py-12">
                             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                            <p className="mt-4 text-muted-foreground">Loading passages...</p>
+                            <p className="mt-4 text-sm sm:text-base text-muted-foreground">Loading passages...</p>
                         </div>
                     )}
 
                     {isError && (
-                        <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-6 text-center">
-                            <p className="text-destructive font-medium">Error loading passages</p>
-                            <p className="text-sm text-muted-foreground mt-2">{error?.message}</p>
+                        <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-4 sm:p-6 text-center">
+                            <p className="text-sm sm:text-base text-destructive font-medium">Error loading passages</p>
+                            <p className="text-xs sm:text-sm text-muted-foreground mt-2">{error?.message}</p>
                         </div>
                     )}
 
                     {!isLoading && !isError && filteredVerses.length === 0 && (
                         <div className="text-center py-12">
-                            <p className="text-muted-foreground">No passages found matching your search.</p>
+                            <p className="text-sm sm:text-base text-muted-foreground">No passages found matching your search.</p>
                         </div>
                     )}
 
                     {!isLoading && !isError && filteredVerses.length > 0 && (
                         <>
                             {categorySearch && (
-                                <p className="text-sm text-muted-foreground">
+                                <p className="text-xs sm:text-sm text-muted-foreground">
                                     Showing {filteredVerses.length} of {transformedVerses.length} passages
                                 </p>
                             )}

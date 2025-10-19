@@ -5,6 +5,11 @@ import Sidemenu from "@/components/layout/sidemenu";
 export const metadata: Metadata = {
   title: "Passage",
   description: "Find bible passages by tranquil categories",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 export default function RootLayout({
@@ -18,7 +23,7 @@ export default function RootLayout({
       <body className="rhythm">
         <div className="min-h-screen">
           <aside
-            className="glass rounded-none  p-6 fixed inset-y-0 left-0 hidden md:block overflow-auto"
+            className="glass rounded-none  p-6 fixed inset-y-0 left-0 hidden md:block overflow-auto z-40"
             style={{ width: sidebarWidth }}
           >
             <div className="sticky top-6">
@@ -26,7 +31,7 @@ export default function RootLayout({
             </div>
           </aside>
 
-          <div className="mx-auto max-w-7xl px-6 py-10" style={{ paddingLeft: `calc(1.5rem + ${sidebarWidth})` }}>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-10 md:pl-[calc(1.5rem+280px)]">
             <main className="rounded-xl p-2">
               {children}
             </main>

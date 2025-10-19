@@ -1,10 +1,58 @@
 "use client"
 
-import { Sparkles, Heart, Search, BookMarked, Settings } from "lucide-react"
+import { Sparkles, Heart, Search, BookMarked, Settings, Menu, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import { useState } from "react"
 
 function Sidemenu() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const savedVerses = [
+    {
+      text: "I can do all things through Christ who strengthens me.",
+      reference: "Philippians 4:13",
+      category: "Strength",
+    },
+    { text: "The Lord is my shepherd; I shall not want.", reference: "Psalm 23:1", category: "Peace" },
+    { text: "For God so loved the world that he gave his one and only Son.", reference: "John 3:16", category: "Love" },
+  ]
+
+  return (
+    <>
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-card border border-border shadow-lg"
+        aria-label="Toggle menu"
+      >
+        {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-30"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden fixed inset-y-0 left-0 z-40 w-[280px] glass p-6 overflow-auto transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
+      >
+        <SideMenuContent onLinkClick={() => setIsMobileMenuOpen(false)} />
+      </div>
+
+      {/* Desktop Menu */}
+      <div className="hidden md:block">
+        <SideMenuContent />
+      </div>
+    </>
+  )
+}
+
+function SideMenuContent({ onLinkClick }: { onLinkClick?: () => void }) {
   const savedVerses = [
     {
       text: "I can do all things through Christ who strengthens me.",
@@ -18,7 +66,7 @@ function Sidemenu() {
   return (
     <nav aria-label="Library" className="space-y-6">
       {/* Logo/Title */}
-      <Link href="/" className="block space-y-2 group">
+      <Link href="/" className="block space-y-2 group" onClick={onLinkClick}>
         <div className="flex items-center gap-2">
           <div className="p-1.5 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
             <Sparkles className="w-5 h-5" />
@@ -62,7 +110,7 @@ function Sidemenu() {
             <Heart className="w-3.5 h-3.5" />
             Saved Verses
           </h2>
-          <Link href="/saved" className="text-xs text-primary hover:underline">
+          <Link href="/saved" className="text-xs text-primary hover:underline" onClick={onLinkClick}>
             View all
           </Link>
         </div>
@@ -88,6 +136,7 @@ function Sidemenu() {
         <Link
           href="/settings"
           className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-sidebar-accent text-sidebar-foreground transition-all group"
+          onClick={onLinkClick}
         >
           <Settings className="w-5 h-5 text-muted-foreground transition-transform group-hover:rotate-90" />
           <span className="font-medium text-sm">Settings</span>

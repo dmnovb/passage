@@ -42,6 +42,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --breakpoint-xs: 475px;
 }
 
 /*@media (prefers-color-scheme: dark) {
@@ -137,15 +138,24 @@
 
 /* Background: soft radial gradients with subtle blur */
 body {
-  background: radial-gradient(1200px 800px at 20% 10%, color-mix(in oklch, var(--accent-sky-2) 30%, transparent), transparent 60%),
-    radial-gradient(900px 700px at 80% 20%, color-mix(in oklch, var(--accent-blush-1) 25%, transparent), transparent 60%),
-    radial-gradient(1200px 800px at 70% 80%, color-mix(in oklch, var(--accent-sky-1) 20%, transparent), transparent 60%),
+  background: radial-gradient(800px 600px at 20% 10%, color-mix(in oklch, var(--accent-sky-2) 30%, transparent), transparent 60%),
+    radial-gradient(600px 500px at 80% 20%, color-mix(in oklch, var(--accent-blush-1) 25%, transparent), transparent 60%),
+    radial-gradient(800px 600px at 70% 80%, color-mix(in oklch, var(--accent-sky-1) 20%, transparent), transparent 60%),
     oklch(0.985 0 0);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Garamond";
+}
+
+@media (min-width: 768px) {
+  body {
+    background: radial-gradient(1200px 800px at 20% 10%, color-mix(in oklch, var(--accent-sky-2) 30%, transparent), transparent 60%),
+      radial-gradient(900px 700px at 80% 20%, color-mix(in oklch, var(--accent-blush-1) 25%, transparent), transparent 60%),
+      radial-gradient(1200px 800px at 70% 80%, color-mix(in oklch, var(--accent-sky-1) 20%, transparent), transparent 60%),
+      oklch(0.985 0 0);
+  }
 }
 
 /* Utilities */
@@ -165,4 +175,24 @@ body {
 .rhythm {
   letter-spacing: 0.01em;
   line-height: 1.65;
+}
+
+/* Touch-friendly interactions for mobile */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Ensure buttons and interactive elements have adequate touch targets */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Disable hover effects on touch devices */
+  .hover\:scale-105 {
+    transition: transform 0.2s;
+  }
+
+  .hover\:scale-105:active {
+    transform: scale(0.98);
+  }
 }
